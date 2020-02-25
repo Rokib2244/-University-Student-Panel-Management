@@ -1,0 +1,131 @@
+﻿.menu {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+}
+.menu:hover {
+    color: black;
+}
+.navbar-inverse {
+    background-color: white;
+    border-color: white;
+}
+.render-div {
+    
+}
+.body-content {
+    margin-left: 25%;
+    /*margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1366px;*/
+}
+#pages {
+    position: fixed;
+    opacity: 1;
+    z-index: 1000;
+}
+.table {
+    width: 89%;
+    margin-left: -10%;
+    margin-top: 5%;
+}
+.pages {
+    display: inline-block;
+    background-color: black;
+    width: 16%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    position: absolute;
+    top: 53px;
+    left: -17%;
+    -webkit-transition: all 0.2s linear 0s;
+}
+.pages-show {
+    display: inline-block;
+    background-color: black;
+    width: 16%;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    position: absolute;
+    top: 53px;
+    left: 0px;
+    -webkit-transition: all 0.2s linear 0s;
+}
+.page-links {
+    list-style-type: none;
+    padding: 0px;
+}
+.page-links li {
+    text-align: center;
+    line-height: 45px;
+}
+/*.page-links li:hover {
+    background-color: white;
+    color: black;  
+}*/
+.page-links a {
+    text-decoration: none;
+    color: white;
+}
+.page-links a:hover {
+    color: black;
+    background-color: white;
+}
+.unassign-btn {
+    margin-left: 16%;
+    font-size: 25px;
+    padding: 15px;
+    margin-top: 5%;
+}
+.form-container {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 1;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 2000;
+    
+}
+.post-form {
+    background-color: white;
+    display: block;
+    margin: 10% auto;
+    border-radius: 10px;
+    width: 43%;
+    height: 32%;
+   /* z-index: 1000;*/
+    opacity: 1;
+}
+.confirm-message {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 40px;
+}
+.no-btn {
+    margin-left: 23px;
+    text-decoration: none;
+    color: white;
+}
+.no-btn:hover {
+    color: white;
+}
+.yes-btn,.no-btn {
+    margin-top: 35px;
+}
+.yes-btn {
+    margin-left: -17px;
+}
+.btn-container {
+    margin-top: 20px;
+}
+.field-validation-error {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+}
+/*.field-validation-error {
+    color: #b94a48;
+}*/

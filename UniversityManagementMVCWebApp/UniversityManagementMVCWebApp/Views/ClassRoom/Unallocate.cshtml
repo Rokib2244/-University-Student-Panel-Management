@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Unallocate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="padding-left: 15%">Unallocate all Classrooms</h3>
+
+<div style="margin-top: 5%" class="form-div">
+    @*<form class="form-horizontal" method="POST">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-info">Save</button>
+                </div>
+            </div>
+        </form>*@
+    <input type="button" value="Unallocate Rooms" class="btn btn-danger btn-large unassign-btn" />
+</div>
+@section scripts{
+    <script src="~/Scripts/UnassignCourses.js"></script>
+}

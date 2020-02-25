@@ -1,0 +1,111 @@
+﻿@using UniversityManagementMVCWebApp.Models
+@model UniversityManagementMVCWebApp.Models.ClassRoomAllocation
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Department> departments = ViewBag.Departments;
+    List<Course> courses = ViewBag.Courses;
+    List<ClassRoom> rooms = ViewBag.ClassRooms;
+    List<string> days = ViewBag.Days;
+}
+<div>
+    <form class="form-horizontal" method="POST" id="submitForm">
+        <div class="form-group">
+            <label for="departmentDropDownList" class="col-sm-2 control-label">Department</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="departmentDropDownList" name="DepartmentID">
+                    @foreach (Department department in departments)
+                    {
+                        <option value="@department.ID">@department.Code</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(m=>m.DepartmentID)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="courseDropDownList" class="col-sm-2 control-label">Course</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="courseDropDownList" name="CourseID">
+                    <option value="0">--Select a Course</option>
+                </select>
+                @Html.ValidationMessageFor(m => m.CourseID)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="roomDropDownList" class="col-sm-2 control-label">Room No.</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="roomDropDownList" name="RoomID">
+                    <option value="0">--Select a Class Room--</option>
+                </select>
+                @Html.ValidationMessageFor(m => m.RoomID)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dayDropDownList" class="col-sm-2 control-label">Day</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="dayDropDownList" name="Day">
+                    @foreach (string day in days)
+                    {
+                        <option value="@day">@day</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(m => m.Day)
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="fromTimeTextBox" class="col-sm-2 control-label">From</label>
+            <div class="col-sm-10">
+                <input type="text" id="fromTimeTextBox" name="FromTimeHour" class="form-control"/>
+                @Html.ValidationMessageFor(m => m.FromTimeHour)
+                <label class="radio-inline">
+                    <input type="radio" name="FromTimePeriod" id="amRadioForFromTime" value="AM"> AM
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="FromTimePeriod" id="pmRadioForFromTime" value="PM"> PM
+                </label>
+                <br/>
+                @Html.ValidationMessageFor(m => m.FromTimePeriod)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="toTimeTextBox" class="col-sm-2 control-label">To</label>
+            <div class="col-sm-10">
+                <input type="text" id="toTimeTextBox" name="ToTimeHour" class="form-control"/>
+                @Html.ValidationMessageFor(m => m.ToTimeHour)
+                <label class="radio-inline">
+                    <input type="radio" name="ToTimePeriod" id="amRadioForToTime" value="AM"> AM
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="ToTimePeriod" id="pmRadioForToTime" value="PM"> PM
+                </label>
+                <br/>
+                @Html.ValidationMessageFor(m => m.ToTimePeriod)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-info">Allocate</button>
+            </div>
+        </div>
+    </form>
+    <p>@ViewBag.Message</p>
+    <br />
+    <br />
+    <br />
+    <div>
+
+    </div>
+</div>
+@section scripts{
+    @*<script src="~/Scripts/jquery-3.1.1.min.js"></script>*@
+    <script src="~/Scripts/AllocateClassRooms.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+    <script src="~/Scripts/jquery.timepicker.min.js"></script>
+    <script src="~/Scripts/ClassRoomAllocationValidationAndTimepicker.js"></script>
+}
+@section styles{
+
+    <link href="~/Content/jquery.timepicker.min.css" rel="stylesheet" />
+}
+

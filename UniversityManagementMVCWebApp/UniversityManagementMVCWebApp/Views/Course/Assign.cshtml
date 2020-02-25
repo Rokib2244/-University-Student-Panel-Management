@@ -1,0 +1,87 @@
+﻿@using UniversityManagementMVCWebApp.Models
+@model UniversityManagementMVCWebApp.Models.CourseAssign
+
+@{
+    Layout = null;
+    List<Department> departments = ViewBag.Departments;
+    List<Teacher> teachers = ViewBag.Teachers;
+    List<Course> courses = ViewBag.Courses;
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+    <link href="~/Content/CourseAssign.css" rel="stylesheet" />
+}
+<div>
+    <form class="form-horizontal" method="POST" id="submitForm">
+        <div class="form-group">
+            <label for="departmentDropDownList" class="col-sm-2 control-label">Department</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="departmentDropDownList" name="DepartmentID">
+                    @foreach (Department department in departments)
+                    {
+                        <option value="@department.ID">@department.Code</option>
+                    }
+                </select>
+                @Html.ValidationMessageFor(m=>m.DepartmentID)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="teacherDropDownList" class="col-sm-2 control-label">Teacher</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="teacherDropDownList" name="TeacherID">
+                    <option value="0">--Select a teacher--</option>
+                </select>
+                @Html.ValidationMessageFor(m=>m.TeacherID)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="creditTextBox" class="col-sm-2 control-label">Credit to be taken</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="creditTextBox" placeholder="Total Credit" name="TotalCredit" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="remainingCreditTextBox" class="col-sm-2 control-label">Remaining Credit</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="remainingCreditTextBox" placeholder="Remaining Credit" name="RemainingCredit" readonly="readonly">
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="courseCodeDropDownList" class="col-sm-2 control-label">Course Code</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="courseCodeDropDownList" name="CourseID">
+                    <option value="0">--Select a course--</option>
+                </select>
+                @Html.ValidationMessageFor(m=>m.CourseID);
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nameTextBox" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="nameTextBox" placeholder="Name" name="CourseName" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="courseCreditTextBox" class="col-sm-2 control-label">Credit</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="courseCreditTextBox" placeholder="Credit" name="CourseCredit" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-info assign-btn">Assign</button>
+            </div>
+        </div>
+    </form>
+    <p>@ViewBag.Message</p>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/CourseAssign.js"></script>
+    <script src="~/Scripts/CourseAssignValidation.js"></script>
+}
+

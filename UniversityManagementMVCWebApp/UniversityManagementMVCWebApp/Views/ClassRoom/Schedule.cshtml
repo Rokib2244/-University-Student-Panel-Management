@@ -1,0 +1,68 @@
+﻿@using System.Diagnostics.Eventing.Reader
+@using UniversityManagementMVCWebApp.Models
+@using UniversityManagementMVCWebApp.Models.Views
+@model UniversityManagementMVCWebApp.Models.Department
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Department> departments = ViewBag.Departments;
+    List<ClassRoomAllocationAndClassSchedule> classSchedules = ViewBag.classSchedule;
+    ViewBag.Title = "Class Schedule";
+}
+
+<div>
+
+    <h3>View Class schedule and Room Allocation Information</h3>
+    <br/>
+    <br/>
+    <form class="form-horizontal" method="POST" id="submitForm">
+        <div class="form-group">
+            <label for="departmentDropDownList" class="col-sm-2 control-label">Department</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="departmentDropDownList" name="ID">
+                    @foreach (Department department in departments)
+                    {
+                        <option value="@department.ID">@department.Code</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered table-responsive table-striped">
+        <thead>
+            <tr>
+                <td>Course Code</td>
+                <td>Name</td>
+                <td>Schedule Info</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ClassRoomAllocationAndClassSchedule classSchedule in classSchedules)
+            {
+                <tr>
+                    <td>@classSchedule.Code</td>
+                    <td>@classSchedule.Name</td>
+                    <td>
+                        @foreach (ClassRoomAllocation classRoomAllocation in classSchedule.ClassRoomAllocations)
+                        {
+                            if (classRoomAllocation.Day.Length == 0)
+                            {
+                                <span>Not Scheduled Yet</span>
+                                break;
+                            }
+                            else
+                            {
+                                <span>R. No :@classRoomAllocation.RoomName, @classRoomAllocation.Day, @classRoomAllocation.FromTime - @classRoomAllocation.ToTime;</span><br />
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
